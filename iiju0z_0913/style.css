@@ -5,3 +5,6 @@
 .padding{
     padding-top: 5%;
 }
+ body{
+    background-image: url(background.png);
+ }
