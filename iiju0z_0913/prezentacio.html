@@ -2,79 +2,43 @@
 
 <head>
   <title>Prezentáció készítése</title>
-  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 
 <body>
-  <div class="root">
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <a href="index.html">
-          <img style="width:20%;" class="navbar-sized" src="logo2.png">
-        </a>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="adatbazis.html">Adatbázisrendszerek</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="internet.html">HTML5 nyelv alapjai</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="prezentacio.html">Prezentáció készítése</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+  <nav>
 
-    <div class="main-content">
-      <div class="container text-center padding">
-        <div class="row row-cols-2 gy-3 align-items-center">
-          <div class="col d-flex justify-content-center">
-            <h3>Prezentáció készítés</h3>
-          </div>
-          <div class="col d-flex justify-content-center">
-            <img src="powerpoint.png" style="width: 225px; height: 225px;">
-          </div>
-          <div class="col d-flex">
-            <ul class="mx-auto justify-content-center">
-              <li>
-                Prezentációs programok szolgáltatásai
-              </li>
-              <li>
-                Prezentáció felépítése
-              </li>
-              <li>
-                Prezentáció készítése, fajtái
-              </li>
-              <li>
-                Szövegek és objektumok elhelyezése
-              </li>
-              <li>
-                Formázás automatikus eszközökkel
-              </li>
-              <li>
-                Egyéni animáció
-              </li>
-              <li>
-                Áttűnés, időzítés
-              </li>
-              <li>
-                Egyéni formátumok beállításai
-              </li>
-              <li>
-                Hiperhivatkozás
-              </li>
-              <li>
-                Kész prezentáció készítése
-              </li>
-            </ul>
-          </div>
-          <div class="col d-flex justify-content-center">
-            <img src="prezi.png" style="width: 310px; height: 310px;">
-          </div>
-        </div>
-      </div>
+    <ul class="menu">
+      <li><a href="adatbazis.html">Adatbázisrendszerek</a></li>
+      <li><a href="internet.html">HTML5 nyelv alapjai</a></li>
+      <li ><a id="current" href="prezentacio.html">Prezentáció készítése</a></li>
+    </ul>
+    <div class="logo">
+      <a href="index.html">
+        <img id="homebutton" src="material/home-button.png">
+      </a>
     </div>
+  </nav>
+
+  <div class="images">
+    <img src="material/powerpoint.png" style="width: 225px; height: 225px;">
+    <img src="material/prezi.png" style="width: 310px; height: 310px;">
+  </div>
+  <div class="list">
+    <ul>
+      <li>Prezentációs programok szolgáltatásai</li>
+      <li>Prezentáció felépítése</li>
+      <li>Prezentáció készítése, fajtái</li>
+      <li>Szövegek és objektumok elhelyezése</li>
+      <li>Formázás automatikus eszközökkel</li>
+      <li>Egyéni animáció</li>
+      <li>Áttűnés, időzítés</li>
+      <li>Egyéni formátumok beállításai</li>
+      <li>Hiperhivatkozás</li>
+      <li>Kész prezentáció készítése</li>
+    </ul>
+  </div>
+  <div id="author">
+    Érsek Norbert IIJU0Z
   </div>
 </body>

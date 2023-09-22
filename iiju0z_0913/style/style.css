@@ -1,0 +1,131 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image: url(material/background2.png);
+    background-size: cover;
+    cursor: default;
+}
+
+#homebutton {
+    width: 10%;
+}
+
+#author {
+    padding-bottom: 10px;
+    padding-right: 30px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: large;
+    user-select: none;
+}
+
+nav {
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15%;
+}
+
+.logo {
+    max-width: 30%;
+}
+
+.logo img {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.logo:hover {
+    cursor: pointer;
+    opacity: 75%;
+}
+
+.logo ul li {
+    list-style-type: none;
+
+}
+
+.logo ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.menu li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+    transition: opacity 0.3s;
+}
+
+.menu li a:hover {
+    cursor: pointer;
+    opacity: 75%;
+}
+
+.welcome {
+    text-align: center;
+}
+
+.welcome #special {
+    font-size: larger;
+}
+
+.images {
+    float: right;
+    user-select: none;
+}
+
+.images ul li {
+    list-style-type: none;
+    padding-right: 500px;
+}
+
+.list {
+    position: relative;
+    max-width: 50%;
+}
+
+.list ul {
+    list-style-type: none;
+    max-width: fit-content;
+    background-color: rgba(110, 205, 240, 0.7);
+    padding: 20px;
+    border-radius: 10%;
+    text-align: center;
+}
+
+.list ul li {
+    padding: 10px;
+    position: relative;
+}
+
+
+#current {
+    font-size: larger;
+    background-color: aqua;
+    padding: 10px;
+    border-radius: 20%;
+    transition: background-color 0.3s;
+}
+#current:hover{
+    opacity: 75%;
+    background-color: rgb(76, 252, 193);
+}
