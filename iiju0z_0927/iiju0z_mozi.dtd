@@ -1,0 +1,13 @@
+<!ELEMENT root (film?)>
+<!ELEMENT film (rendezo, szinesz, iro)>
+<!ATTLIST film
+    mufaj (horror | comedy | thriller) #REQUIRED
+    rendezo CDATA #REQUIRED
+    szinesz CDATA #REQUIRED
+    iro CDATA #REQUIRED
+    attribute1 CDATA #IMPLIED
+    attribute2 CDATA #IMPLIED
+>
+<!ELEMENT horror (#PCDATA)>
+<!ELEMENT comedy (#PCDATA)>
+<!ELEMENT thriller (#PCDATA)>
