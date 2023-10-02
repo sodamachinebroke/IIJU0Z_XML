@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE BSZK_adatbazis SYSTEM "BSZK_adatbazis.dtd">
+
+<BSZK_adatbazis>
+    <dolgozo kod="a">
+        <nev>Dr. Bednarik László</nev>
+        <fizetes>1234567</fizetes>
+    </dolgozo>
+    <dolgozo kod="b">
+        <nev>Prof. Dr. Kovács László</nev>
+        <fizetes>1234567</fizetes>
+    </dolgozo>
+    <dolgozo kod="c">
+        <nev>Prof Dr. Horváth Zita</nev>
+        <fizetes>999999999</fizetes>
+    </dolgozo>
+</BSZK_adatbazis>
