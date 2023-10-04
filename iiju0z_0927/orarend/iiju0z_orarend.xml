@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE iiju0z_orarend [
+<!--<!DOCTYPE iiju0z_orarend [
   <!ELEMENT iiju0z_orarend (ora+)>
   <!ELEMENT ora (targy, idopont, helyszin, oktato, szak)>
   <!ATTLIST ora
@@ -14,9 +14,12 @@
   <!ELEMENT nap (#PCDATA)>
   <!ELEMENT tol (#PCDATA)>
   <!ELEMENT ig (#PCDATA)>
-]>
+]>-->
 
-<iiju0z_orarend>
+<iiju0z_orarend
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="iiju0z_orarend.xsd">
+
     <ora id="1" tipus="Előadás">
         <targy>Lineáris Algebra Numerikus módszerei</targy>
         <idopont>
