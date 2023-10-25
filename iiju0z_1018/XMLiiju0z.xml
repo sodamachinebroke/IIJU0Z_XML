@@ -23,7 +23,7 @@
         <ország>Magyarország</ország>
         <díj>20.000$</díj>
     </fellépő>
-    <fellépő FEL_ID="fel2" FESZ_FESZ="fesz1">
+    <fellépő FEL_ID="fel2" FEL_FESZ="fesz1">
         <név>belga</név>
         <ország>Magyarország</ország>
         <díj>5.000$</díj>

@@ -1,109 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-<xs:simpleType name="fesztivalTipus">
-    <xs:restriction base="xs:string">
-        <xs:pattern value="\d{4}/\d{4}I(I){0,1}" />
-    </xs:restriction>
-</xs:simpleType>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified">
 
-<xs:simpleType name="egyetemTipus">
-    <xs:restriction base="xs:string">
-        <xs:pattern value="ME" />
-    </xs:restriction>
-</xs:simpleType>
+    <!-- Define custom types for elements -->
+    <xsd:complexType name="FesztivalType">
+        <xsd:sequence>
+            <xsd:element name="név" type="xsd:string" />
+            <xsd:element name="helyszín" type="xsd:string" />
+            <xsd:element name="év" type="xsd:integer" />
+        </xsd:sequence>
+        <xsd:attribute name="FESZ_ID" type="xsd:string" />
+    </xsd:complexType>
 
-<xs:simpleType name="idTipus">
-    <xs:restriction base="xs:string">
-        <xs:minLength value="5" />
-        <xs:maxLength value="10" />
-    </xs:restriction>
-</xs:simpleType>
+    <xsd:complexType name="TulajdonosType">
+        <xsd:sequence>
+            <xsd:element name="név" type="xsd:string" />
+            <xsd:element name="adószám" type="xsd:integer" />
+            <xsd:element name="alapítás" type="xsd:string" />
+            <xsd:element name="bevétel" type="xsd:string" />
+        </xsd:sequence>
+        <xsd:attribute name="T_ID" type="xsd:string" />
+        <xsd:attribute name="FESZ_T" type="xsd:string" />
+    </xsd:complexType>
 
-<xs:simpleType name="logTipus">
-    <xs:restriction base="xs:string">
-        <xs:enumeration value="igen" />
-        <xs:enumeration value="nem" />
-    </xs:restriction>
-</xs:simpleType>
-    <xs:element name="Fesztival_iiju0z">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="fesztival" type="fesztivalTipus" maxOccurs="unbounded"/>
-                <xs:element name="tulajdonos" type="tulajdonosTipus" maxOccurs="1"/>
-                <xs:element name="fellépő" type="fellépőTipus" maxOccurs="unbounded"/>
-                <xs:element name="résztvevő" type="résztvevőTipus" maxOccurs="unbounded"/>
-                <xs:element name="közvélemény" type="közvéleményTipus" maxOccurs="unbounded"/>
-                <xs:element name="nyelvtudás" type="nyelvtudásTipus" maxOccurs="unbounded"/>
-                <xs:element name="bár" type="bárTipus" maxOccurs="unbounded"/>
-                <xs:element name="alkalmazott" type="alkalmazottTipus" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
+    <xsd:complexType name="FellépőType">
+        <xsd:sequence>
+            <xsd:element name="név" type="xsd:string" />
+            <xsd:element name="ország" type="xsd:string" />
+            <xsd:element name="díj" type="xsd:string" />
+        </xsd:sequence>
+        <xsd:attribute name="FEL_ID" type="xsd:string" />
+        <xsd:attribute name="FEL_FESZ" type="xsd:string" />
+    </xsd:complexType>
 
-        <xs:key name="fesztival_kulcs">
-            <xs:selector xpath="fesztival"/>
-            <xs:field xpath="@FESZ_ID"/>
-        </xs:key>
-        <xs:key name="tulajdonos_kulcs">
-            <xs:selector xpath="tulajdonos"/>
-            <xs:field xpath="@T_ID"/>
-        </xs:key>
-        <xs:key name="fellépő_kulcs">
-            <xs:selector xpath="fellépő"/>
-            <xs:field xpath="@FEL_ID"/>
-        </xs:key>
-        <xs:key name="résztvevő_kulcs">
-            <xs:selector xpath="résztvevő"/>
-            <xs:field xpath="@R_ID"/>
-        </xs:key>
-        <xs:key name="alkalmazott_kulcs">
-            <xs:selector xpath="alkalmazott"/>
-            <xs:field xpath="@A_ID"/>
-        </xs:key>
-        <xs:key name="nyelvtudás_kulcs">
-            <xs:selector xpath="nyelvtudás"/>
-            <xs:field xpath="@NY_ID"/>
-        </xs:key>
-        <xs:key name="bár_kulcs">
-            <xs:selector xpath="bár"/>
-            <xs:field xpath="@B_ID"/>
-        </xs:key>
+    <xsd:complexType name="RésztvevőType">
+        <xsd:sequence>
+            <xsd:element name="név" type="xsd:string" />
+            <xsd:element name="diákigazolvány" type="xsd:integer" />
+            <xsd:element name="lakcím">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="település" type="xsd:string" />
+                        <xsd:element name="utca" type="xsd:string" />
+                        <xsd:element name="házszám" type="xsd:string" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="R_ID" type="xsd:string" />
+        <xsd:attribute name="FESZ_R" type="xsd:string" />
+    </xsd:complexType>
 
+    <xsd:complexType name="KözvéleményType">
+        <xsd:sequence>
+            <xsd:element name="kérdező" type="xsd:string" />
+        </xsd:sequence>
+        <xsd:attribute name="köz_resz" type="xsd:string" />
+        <xsd:attribute name="köz_nyel" type="xsd:string" />
+        <xsd:attribute name="K_ID" type="xsd:string" />
+    </xsd:complexType>
 
-        <xs:keyref refer="résztvevő_kulcs" name="résztvevő_idegen_kulcs">
-            <xs:selector xpath="közvélemény"/>
-            <xs:field xpath="@köz_resz"/>
-        </xs:keyref>
+    <xsd:complexType name="NyelvtudásType">
+        <xsd:sequence>
+            <xsd:element name="nyelv" type="xsd:string" />
+            <xsd:element name="szint" type="xsd:string" />
+        </xsd:sequence>
+        <xsd:attribute name="NY_ID" type="xsd:string" />
+    </xsd:complexType>
 
-        <xs:keyref refer="nyelvtudás_kulcs" name="nyelvtudás_idegen_kulcs">
-            <xs:selector xpath="közvélemény"/>
-            <xs:field xpath="@köz_nyel"/>
-        </xs:keyref>
+    <xsd:complexType name="BárType">
+        <xsd:sequence>
+            <xsd:element name="név" type="xsd:string" />
+            <xsd:element name="cég" type="xsd:string" />
+            <xsd:element name="ital" type="xsd:string" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="B_ID" type="xsd:string" />
+        <xsd:attribute name="FESZ_B" type="xsd:string" />
+    </xsd:complexType>
 
-        <xs:keyref refer="fesztival_kulcs" name="fesztival_résztvevő_idegen_kulcs">
-            <xs:selector xpath="közvélemény"/>
-            <xs:field xpath="@FESZ_R"/>
-        </xs:keyref>
+    <xsd:complexType name="AlkalmazottType">
+        <xsd:sequence>
+            <xsd:element name="név" type="xsd:string" />
+            <xsd:element name="fizetés" type="xsd:string" />
+            <xsd:element name="műszak" type="xsd:string" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="A_ID" type="xsd:string" />
+        <xsd:attribute name="B_A" type="xsd:string" />
+    </xsd:complexType>
 
-        <xs:keyref refer="fesztival_kulcs" name="fesztival_tulajdonos_idegen_kulcs">
-            <xs:selector xpath="közvélemény"/>
-            <xs:field xpath="@FESZ_T"/>
-        </xs:keyref>
-
-        <xs:keyref refer="fesztival_kulcs" name="fesztival_fellépő_idegen_kulcs">
-            <xs:selector xpath="közvélemény"/>
-            <xs:field xpath="@FEL_FESZ"/>
-        </xs:keyref>
-
-
-        <xs:keyref refer="fesztival_kulcs" name="fesztival_bár_idegen_kulcs">
-            <xs:selector xpath="közvélemény"/>
-            <xs:field xpath="@FESZ_B"/>
-        </xs:keyref>
-
-        <xs:keyref refer="alkalmazott_kulcs" name="bár_idegen_kulcs">
-            <xs:selector xpath="közvélemény"/>
-            <xs:field xpath="@B_A"/>
-        </xs:keyref>
-
-    </xs:element>
-</xs:schema>
+    <!-- Define the root element with custom types -->
+    <xsd:element name="Fesztival_iiju0z">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="fesztival" type="FesztivalType" maxOccurs="unbounded" />
+                <xsd:element name="tulajdonos" type="TulajdonosType" maxOccurs="unbounded" />
+                <xsd:element name="fellépő" type="FellépőType" maxOccurs="unbounded" />
+                <xsd:element name="résztvevő" type="RésztvevőType" maxOccurs="unbounded" />
+                <xsd:element name="közvélemény" type="KözvéleményType" maxOccurs="unbounded" />
+                <xsd:element name="nyelvtudás" type="NyelvtudásType" maxOccurs="unbounded" />
+                <xsd:element name="bár" type="BárType" maxOccurs="unbounded" />
+                <xsd:element name="alkalmazott" type="AlkalmazottType" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

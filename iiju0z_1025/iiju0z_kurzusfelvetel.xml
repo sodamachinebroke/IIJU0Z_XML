@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<iiju0z_kurzusfelvetel tanev="2023/2024I" egyetem="ME"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="iiju0z_kurzusfelvetel.xsd"
+>
+    <hallgato id="iiju0z" >
+        <hnev>Ersek Norbert</hnev>
+        <szulev>2000-11-03</szulev>
+        <szak evf="3" >Programtervezo</szak>
+    </hallgato>
+
+    <kurzusok>
+        <kurzus id="GEIAL332-B">
+            <kurzusnev>Adatkezeles XML-ben</kurzusnev>
+            <kredit>5</kredit>
+            <hely>XXXII.</hely>
+            <idopont>Kedd 12:00 - 13:00</idopont>
+            <oktato>Bednarik Laszlo</oktato>
+        </kurzus>
+
+        <kurzus id="GEMAK234-B">
+            <kurzusnev>Algoritmusok es vizsgalatuk</kurzusnev>
+            <kredit>5</kredit>
+            <idopont>Kedd 14:00 - 15:30</idopont>
+            <hely>A1/320</hely>
+            <oktato>Dr. Hazy Attila</oktato>
+        </kurzus>
+
+        <kurzus id="GEIAK310-B" jovahagyas="igen">
+            <kurzusnev>Jatek Prototipusok</kurzusnev>
+            <kredit>5</kredit>
+            <hely>inf 15</hely>
+            <idopont>Csutortok 16:00 - 20:00</idopont>
+            <oktato>Kiss Aron</oktato>
+        </kurzus>
+        <kurzus id="GEMAK231-B">
+            <kurzusnev>Linearis Algebra Numerikus Modszerei</kurzusnev>
+            <kredit>4</kredit>
+            <hely>A1/204</hely>
+            <idopont>Hetfo 8:00 - 9:30</idopont>
+            <oktato>Karacsony Zsolt</oktato>
+        </kurzus>
+        <kurzus id="GEMAN151-B">
+            <kurzusnev>Matematikai Analizis 1</kurzusnev>
+            <kredit>5</kredit>
+            <hely>CV</hely>
+            <idopont></idopont>
+            <oktato>Lengyelne Dr. Szilagyi Szilvia</oktato>
+        </kurzus>
+
+    </kurzusok>
+</iiju0z_kurzusfelvetel>
