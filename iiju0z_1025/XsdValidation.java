@@ -17,6 +17,7 @@ public class XsdValidation {
             dBF.setNamespaceAware(true);
             DocumentBuilder dB = dBF.newDocumentBuilder();
             org.w3c.dom.Document doc = dB.parse(new File("iiju0z_kurzusfelvetel.xml"));
+            
 
             SchemaFactory schFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI); // Create a schema
                                                                                                       // factory and set
