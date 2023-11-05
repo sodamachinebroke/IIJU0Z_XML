@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <iiju0z_kurzusfelvetel tanev="2023/2024I" egyetem="ME"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="iiju0z_kurzusfelvetel.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="iiju0z_kurzusfelvetel.xsd"
 >
-    <hallgato id="iiju0z" >
+    <hallgato id="iiju0z">
         <hnev>Ersek Norbert</hnev>
         <szulev>2000-11-03</szulev>
-        <szak evf="3" >Programtervezo</szak>
+        <szak evf="3">Programtervezo</szak>
     </hallgato>
 
     <kurzusok>

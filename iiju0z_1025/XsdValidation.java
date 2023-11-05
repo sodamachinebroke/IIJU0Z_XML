@@ -17,7 +17,6 @@ public class XsdValidation {
             dBF.setNamespaceAware(true);
             DocumentBuilder dB = dBF.newDocumentBuilder();
             org.w3c.dom.Document doc = dB.parse(new File("iiju0z_kurzusfelvetel.xml"));
-            
 
             SchemaFactory schFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI); // Create a schema
                                                                                                       // factory and set
@@ -30,7 +29,7 @@ public class XsdValidation {
             validator.validate(new StreamSource(new File("iiju0z_kurzusfelvetel.xml"))); // Validate the XML against the
                                                                                          // XSD
 
-            System.out.println("XML is valid according to the XSD schema."); //if :3
+            System.out.println("XML is valid according to the XSD schema."); // if :3
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
