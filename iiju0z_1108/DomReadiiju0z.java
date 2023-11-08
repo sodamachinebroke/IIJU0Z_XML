@@ -1,7 +1,4 @@
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -11,7 +8,7 @@ public class DomReadiiju0z {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            Document doc = builder.parse("orarendiiju0z.xml"); // Replace with the path to your XML file
+            Document doc = builder.parse("orarendiiju0z.xml");
 
             Element root = doc.getDocumentElement();
             NodeList oraList = root.getElementsByTagName("ora");
