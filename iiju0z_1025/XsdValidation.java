@@ -13,27 +13,29 @@ import java.io.IOException;
 public class XsdValidation {
     public static void main(String[] args) {
         try {
-            // Load and parse the XML file
-            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-            documentBuilderFactory.setNamespaceAware(true);
-            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            org.w3c.dom.Document document = documentBuilder.parse(new File("iiju0z_kurzusfelvetel.xml"));
+            DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance(); // parsing XML file
+            dBF.setNamespaceAware(true);
+            DocumentBuilder dB = dBF.newDocumentBuilder();
+            // Parse the XML directly without storing it in "doc"
+            dB.parse(new File("iiju0z_kurzusfelvetel.xml"));
 
-            // Create a schema factory and set the XSD schema file
-            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = schemaFactory.newSchema(new File("iiju0z_kurzusfelvetel.xsd")); // Provide the path to your XSD file
+            SchemaFactory schFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI); // Create a schema
+                                                                                                      // factory and set
+                                                                                                      // the XSD schema
+                                                                                                      // file
+            Schema schema = schFactory.newSchema(new File("iiju0z_kurzusfelvetel.xsd"));
 
-            // Create a validator with the schema
-            Validator validator = schema.newValidator();
+            Validator validator = schema.newValidator(); // Validator creation
 
-            // Validate the XML against the XSD
-            validator.validate(new StreamSource(new File("iiju0z_kurzusfelvetel.xml")));
+            validator.validate(new StreamSource(new File("iiju0z_kurzusfelvetel.xml"))); // Validate the XML against the
+                                                                                         // XSD
 
-            System.out.println("XML is valid according to the XSD schema.");
+            System.out.println("XML is valid according to the XSD schema."); // if :3
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
-            System.err.println("XML is not valid according to the XSD schema.");
+            System.err.println("XML is not valid according to the XSD schema."); // if not :3
         }
     }
 }
+

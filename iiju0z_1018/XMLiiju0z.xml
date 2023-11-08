@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Fesztival_iiju0z 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<Fesztival_iiju0z
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="XMLSchemaiiju0z.xsd"
 >
     <fesztival FESZ_ID="fesz1">
@@ -11,13 +11,12 @@
     </fesztival>
 
 
-
     <tulajdonos T_ID="tul1" FESZ_T="fesz1">
         <név>Kovács András</név>
         <adószám>123456789</adószám>
         <alapítás>2023.05.23</alapítás>
         <bevétel>82.321.342$</bevétel>
-     </tulajdonos>
+    </tulajdonos>
     <fellépő FEL_ID="fel1" FEL_FESZ="fesz1">
         <név>majka</név>
         <ország>Magyarország</ország>
@@ -28,7 +27,7 @@
         <ország>Magyarország</ország>
         <díj>5.000$</díj>
     </fellépő>
-    <résztvevő R_ID="resz1"  FESZ_R="resz1">
+    <résztvevő R_ID="resz1" FESZ_R="resz1">
         <név>Szöllősi János</név>
         <diákigazolvány>3474127334</diákigazolvány>
         <lakcím>
@@ -37,7 +36,7 @@
             <házszám>69420</házszám>
         </lakcím>
     </résztvevő>
-    <résztvevő R_ID="resz2"  FESZ_R="resz1">
+    <résztvevő R_ID="resz2" FESZ_R="resz1">
         <név>Lakatos Emese</név>
         <diákigazolvány>9557123733</diákigazolvány>
         <lakcím>
