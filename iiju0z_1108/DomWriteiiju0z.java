@@ -1,8 +1,4 @@
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -90,7 +86,6 @@ public class DomWriteiiju0z {
         System.out.println(indent.toString() + "</" + element.getTagName() + ">");
     }
 
-    // Function to write the XML document to a file
     private static void writeXMLToFile(Document doc, String filename) throws Exception {
         javax.xml.transform.TransformerFactory transformerFactory = javax.xml.transform.TransformerFactory.newInstance();
         javax.xml.transform.Transformer transformer = transformerFactory.newTransformer();
