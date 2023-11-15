@@ -4,9 +4,13 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamWriter;
 import javax.xml.xpath.*;
-import java.util.HashSet;
+import java.io.*;
+
 import java.util.Set;
+import java.util.HashSet;
 
 public class domQueryiiju0z {
 
@@ -15,6 +19,8 @@ public class domQueryiiju0z {
 
     private final Set<String> uniqueCourses;
     private final Set<String> uniqueTeachers;
+
+    private final String outputFileName = "output.xml"; // Change this as needed
 
     public domQueryiiju0z() {
         this.xPathFactory = XPathFactory.newInstance();
@@ -27,16 +33,16 @@ public class domQueryiiju0z {
         domQueryiiju0z domQuery = new domQueryiiju0z();
         Document xmlDoc = domQuery.loadXMLDocument("orarendiiju0z.xml");
 
-        System.out.println("Kurzusok listaja:");
+        System.out.println("List of Unique Courses:");
         domQuery.listUniqueCourses(xmlDoc);
 
-        System.out.println("\nElso Ora peldany:");
+        System.out.println("\nFirst Instance of 'ora':");
         domQuery.printFirstInstance(xmlDoc);
 
-        System.out.println("\nOktatok listaja:");
+        System.out.println("\nList of Unique Course Teachers:");
         domQuery.listUniqueCourseTeachers(xmlDoc);
 
-        System.out.println("\nKomplex lekerdezes: Mely tantargyat tanitja Karácsony Zsolt?");
+        System.out.println("\nComplex Query Result:");
         domQuery.complexQuery(xmlDoc, "Karácsony Zsolt");
     }
 
@@ -72,7 +78,8 @@ public class domQueryiiju0z {
             XPathExpression expr = xPath.compile("//ora[1]");
             Node firstInstance = (Node) expr.evaluate(xmlDoc, XPathConstants.NODE);
             if (firstInstance != null) {
-                System.out.println(nodeToString(firstInstance));
+                writeToFile(outputFileName, firstInstance);
+                System.out.println("First instance written to " + outputFileName);
             } else {
                 System.out.println("No 'ora' element found.");
             }
@@ -110,13 +117,33 @@ public class domQueryiiju0z {
         }
     }
 
-    private String nodeToString(Node node) {
-        try {
-            XPathExpression expr = xPath.compile("string()");
-            return (String) expr.evaluate(node, XPathConstants.STRING);
-        } catch (XPathExpressionException e) {
+    private void writeToFile(String fileName, Node contentNode) {
+        try (OutputStream outputStream = new FileOutputStream(fileName)) {
+            XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newFactory();
+            XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(outputStream);
+
+            // Write the content node to the XML file
+            writeNode(xmlStreamWriter, contentNode);
+
+            xmlStreamWriter.close();
+        } catch (IOException | javax.xml.stream.XMLStreamException e) {
             e.printStackTrace();
-            return null;
+        }
+    }
+
+    private void writeNode(XMLStreamWriter xmlStreamWriter, Node node) throws javax.xml.stream.XMLStreamException {
+        switch (node.getNodeType()) {
+            case Node.ELEMENT_NODE:
+                xmlStreamWriter.writeStartElement(node.getNodeName());
+                NodeList children = node.getChildNodes();
+                for (int i = 0; i < children.getLength(); i++) {
+                    writeNode(xmlStreamWriter, children.item(i));
+                }
+                xmlStreamWriter.writeEndElement();
+                break;
+            case Node.TEXT_NODE:
+                xmlStreamWriter.writeCharacters(node.getNodeValue());
+                break;
         }
     }
 }
