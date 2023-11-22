@@ -21,7 +21,7 @@ public class xPathiiju0z {
         //Need to un-comment one of these to get the program to work.
 
         // String expression = "/class/student";
-        // String expression = "//student[@id=02]";
+        String expression = "//student[@id=02]";
         // String expression = "//student";
         // String expression = "/class/student[2]";
         // String expression = "/class/student[last()]";
