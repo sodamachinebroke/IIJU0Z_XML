@@ -20,7 +20,7 @@ public class domQueryiiju0z {
     private final Set<String> uniqueCourses;
     private final Set<String> uniqueTeachers;
 
-    private final String outputFileName = "output.xml"; // Change this as needed
+    private final String outputFileName = "orarend1iiju0z.xml"; // Change this as needed
 
     public domQueryiiju0z() {
         this.xPathFactory = XPathFactory.newInstance();

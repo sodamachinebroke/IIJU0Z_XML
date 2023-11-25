@@ -3,6 +3,8 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 
 
