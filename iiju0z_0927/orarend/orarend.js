@@ -1,14 +1,10 @@
-// Load XML data from external file
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", "iiju0z_orarend.xml", false);
 xmlhttp.send();
 var xmlDoc = xmlhttp.responseXML;
 
-// Fetching elements
-var orarendData = xmlDoc.querySelectorAll("ora");
-
-// Table creation
-var table = document.getElementById("orarend-table");
+var orarendData = xmlDoc.querySelectorAll("ora");// Fetching elements
+var table = document.getElementById("orarend-table");// Table creation
 
 for (var i = 0; i < orarendData.length; i++) {
   var row = table.insertRow(i + 1);

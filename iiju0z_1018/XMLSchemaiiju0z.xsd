@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified">
-
-    <!-- Define custom types for elements -->
     <xsd:complexType name="FesztivalType">
         <xsd:sequence>
             <xsd:element name="név" type="xsd:string" />
@@ -87,7 +85,6 @@
         <xsd:attribute name="B_A" type="xsd:string" />
     </xsd:complexType>
 
-    <!-- Define the root element with custom types -->
     <xsd:element name="Fesztival_iiju0z">
         <xsd:complexType>
             <xsd:sequence>
