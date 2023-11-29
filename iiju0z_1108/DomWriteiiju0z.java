@@ -8,44 +8,37 @@ public class DomWriteiiju0z {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            // Load the XML file
-            Document doc = builder.parse("orarendiiju0z.xml");
+            Document doc = builder.parse("orarendiiju0z.xml"); // Load the XML file
 
-            // Create the output doc
-            Document outputDoc = factory.newDocumentBuilder().newDocument();
+            Document outputDoc = factory.newDocumentBuilder().newDocument();// Create the output doc
 
-            // Create a root element for the new doc
-            Element root = outputDoc.createElement("orarendiiju0z");
+            Element root = outputDoc.createElement("orarendiiju0z"); // Create a root element for the new doc
             outputDoc.appendChild(root);
 
-            // Function to recursively create the tree structure and print to the console
-            createTreeStructure(doc.getDocumentElement(), root, outputDoc, 0);
+            createTreeStructure(doc.getDocumentElement(), root, outputDoc, 0); // Print to the console
             printTreeStructure(root, 0);
 
-            // Write the tree structure to the output XML file
-            writeXMLToFile(outputDoc, "orarend1iiju0z.xml");
+            writeXMLToFile(outputDoc, "orarend1iiju0z.xml");// Write the tree structure to the output file
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Recursive function to create the tree structure
-    private static void createTreeStructure(Element sourceElement, Element targetElement, Document outputDoc, int depth) {
+    private static void createTreeStructure(Element sourceElement, Element targetElement, Document outputDoc,
+            int depth) { // Recursive function to create the tree structure
         Element newElement = outputDoc.createElement(sourceElement.getTagName());
 
-        // Copy attributes from the source element to the target element
-        NamedNodeMap attributes = sourceElement.getAttributes();
+        NamedNodeMap attributes = sourceElement.getAttributes();// Copy attributes from the source element to the target
+                                                                // element
         for (int i = 0; i < attributes.getLength(); i++) {
             Node attribute = attributes.item(i);
             newElement.setAttribute(attribute.getNodeName(), attribute.getNodeValue());
         }
 
-        // Append the new element to the target element
-        targetElement.appendChild(newElement);
+        targetElement.appendChild(newElement);// Append the new element to the target element
 
-        // Copy child elements recursively
-        NodeList childNodes = sourceElement.getChildNodes();
+        NodeList childNodes = sourceElement.getChildNodes(); // Copy child elements recursively
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node childNode = childNodes.item(i);
             if (childNode instanceof Element) {
@@ -53,14 +46,14 @@ public class DomWriteiiju0z {
             }
         }
 
-        // Copy text content
-        if (sourceElement.hasChildNodes() && sourceElement.getChildNodes().getLength() == 1 && sourceElement.getFirstChild().getNodeType() == Node.TEXT_NODE) {
+        if (sourceElement.hasChildNodes() && sourceElement.getChildNodes().getLength() == 1
+                && sourceElement.getFirstChild().getNodeType() == Node.TEXT_NODE) {// Copy text
             newElement.setTextContent(sourceElement.getTextContent());
         }
     }
 
-    // Function to print the tree structure to the console
-    private static void printTreeStructure(Element element, int depth) {
+    
+    private static void printTreeStructure(Element element, int depth) {// Function to print the tree structure to the console
         StringBuilder indent = new StringBuilder();
         for (int i = 0; i < depth; i++) {
             indent.append("  ");
@@ -70,7 +63,8 @@ public class DomWriteiiju0z {
         NamedNodeMap attributes = element.getAttributes();
         for (int i = 0; i < attributes.getLength(); i++) {
             Node attribute = attributes.item(i);
-            System.out.println(indent.toString() + "  " + attribute.getNodeName() + "=\"" + attribute.getNodeValue() + "\"");
+            System.out.println(
+                    indent.toString() + "  " + attribute.getNodeName() + "=\"" + attribute.getNodeValue() + "\"");
         }
 
         NodeList childNodes = element.getChildNodes();
@@ -87,12 +81,14 @@ public class DomWriteiiju0z {
     }
 
     private static void writeXMLToFile(Document doc, String filename) throws Exception {
-        javax.xml.transform.TransformerFactory transformerFactory = javax.xml.transform.TransformerFactory.newInstance();
+        javax.xml.transform.TransformerFactory transformerFactory = javax.xml.transform.TransformerFactory
+                .newInstance();
         javax.xml.transform.Transformer transformer = transformerFactory.newTransformer();
         transformer.setOutputProperty(javax.xml.transform.OutputKeys.INDENT, "yes");
 
         javax.xml.transform.dom.DOMSource source = new javax.xml.transform.dom.DOMSource(doc);
-        javax.xml.transform.stream.StreamResult result = new javax.xml.transform.stream.StreamResult(new java.io.File(filename));
+        javax.xml.transform.stream.StreamResult result = new javax.xml.transform.stream.StreamResult(
+                new java.io.File(filename));
         transformer.transform(source, result);
     }
 }
