@@ -1,0 +1,24 @@
+<class>
+    <student id="01">
+        <vezeteknev>Érsek</vezeteknev>
+        <keresztnev>Norbert</keresztnev>
+        <becenev>norb</becenev>
+        <kor>23</kor>
+        <osztondij>-142200</osztondij>
+    </student>
+    <student id="02">
+        <vezeteknev>Piros</vezeteknev>
+        <keresztnev>Nóra</keresztnev>
+        <becenev>Kawasaki</becenev>
+        <kor>20</kor>
+        <osztondij>520000</osztondij>
+    </student>
+    <student id="03">
+        <vezeteknev>Rézműves</vezeteknev>
+        <keresztnev>Akácia</keresztnev>
+        <becenev>2S3</becenev>
+        <kor>18</kor>
+        <osztondij>450000</osztondij>
+    </student>
+    
+</class>
