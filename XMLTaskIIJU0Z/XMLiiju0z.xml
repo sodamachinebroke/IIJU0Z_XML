@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<telecommunications xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xs:noNamespaceSchemaLocation="XSDiiju0z.xsd">
+<telecommunications xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDiiju0z.xsd">
 
 
     <!-- Subscribers -->
