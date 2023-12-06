@@ -73,6 +73,8 @@
     </xs:keyref>
   </xs:element>
 
+  <!-- Entities  -->
+
   <xs:element name="subscribers">
     <xs:complexType>
       <xs:sequence>
