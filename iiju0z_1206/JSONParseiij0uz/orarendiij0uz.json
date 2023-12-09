@@ -1,0 +1,97 @@
+{
+  "orarendiiju0z":{
+    "ora":[
+      {
+        "@id": "1",
+        "@tipus": "eloadas",
+        "targy": "Lineáris Algebra Numerikus Módszerei",
+        "idopont": {
+          "nap": "Hétfő",
+          "tol": "8:00",
+          "ig": "10:00"
+        },
+        "helyszin": "A1 218",
+        "oktato": "Karácsony Zsolt",
+        "szak": "Programtervező Informatikus"
+      },
+      {
+        "@id": "2",
+        "@tipus": "gyakorlat",
+        "targy": "Lineáris Algebra Numerikus Módszerei",
+        "idopont": {
+          "nap": "Hétfő",
+          "tol": "12:00",
+          "ig": "14:00"
+        },
+        "helyszin": "A1 204",
+        "oktato": "Karácsony Zsolt",
+        "szak": "Programtervező Informatikus"
+      },
+      {
+        "@id": "3",
+        "@tipus": "eloadas",
+        "targy": "Adatkezelés XML nyelven",
+        "idopont": {
+          "nap": "Kedd",
+          "tol": "12:00",
+          "ig": "14:00"
+        },
+        "helyszin": "A1 XXXII",
+        "oktato": "Dr. Bednarik László",
+        "szak": "Programtervező Informatikus"
+      },
+      {
+        "@id": "4",
+        "@tipus": "eloadas",
+        "targy": "Algoritmusok és Vizsgálatuk",
+        "idopont": {
+          "nap": "Kedd",
+          "tol": "14:00",
+          "ig": "16:00"
+        },
+        "helyszin": "A1 320",
+        "oktato": "Dr. Házy Attila",
+        "szak": "Programtervező Informatikus"
+      },
+      {
+        "@id": "5",
+        "@tipus": "gyakorlat",
+        "targy": "Algoritmusok és Vizsgálatuk",
+        "idopont": {
+          "nap": "Kedd",
+          "tol": "16:00",
+          "ig": "18:00"
+        },
+        "helyszin": "A1 320",
+        "oktato": "Dr. Házy Attila",
+        "szak": "Programtervező Informatikus"
+      },
+      {
+        "@id": "6",
+        "@tipus": "gyakorlat",
+        "targy": "Adatkezelés XML nyelven",
+        "idopont": {
+          "nap": "Szerda",
+          "tol": "10:00",
+          "ig": "12:00"
+        },
+        "helyszin": "Inf 101",
+        "oktato": "Dr. Bednarik László",
+        "szak": "Programtervező Informatikus"
+      },
+      {
+        "@id": "7",
+        "@tipus": "gyakorlat",
+        "targy": "Játékprototípusok",
+        "idopont": {
+          "nap": "Csütörtök",
+          "tol": "16:00",
+          "ig": "18:00"
+        },
+        "helyszin": "Inf 15",
+        "oktato": "Kiss Áron",
+        "szak": "Programtervező Informatikus"
+      }
+    ]
+  }
+}
