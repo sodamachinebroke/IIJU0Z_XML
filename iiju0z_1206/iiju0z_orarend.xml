@@ -19,7 +19,7 @@
             <tol>12:00</tol>
             <ig>14:00</ig>
         </idopont>
-        <helyszin>Inf 103</helyszin>
+        <helyszin>A1 204</helyszin>
         <oktato>Karácsony Zsolt</oktato>
         <szak>Programtervező informatikus</szak>
     </ora>
@@ -41,7 +41,7 @@
             <tol>14:00</tol>
             <ig>16:00</ig>
         </idopont>
-        <helyszin>A1 320.</helyszin>
+        <helyszin>A1 320</helyszin>
         <oktato>Dr. Házy Attila</oktato>
         <szak>Programtervező informatikus</szak>
     </ora>
