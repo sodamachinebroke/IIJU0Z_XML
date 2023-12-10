@@ -5,28 +5,42 @@
 
     <!-- Subscribers -->
     <!-- begin -->
-    <subscribers sub_id="0001">
-        <phone>+36466748449</phone>
+    <subscriber sub_id="0001">
         <email>piroskaneni@piroskaneni.hu</email>
         <email>piroskaburner@gmail.com</email>
         <email>piros@freemail.hu</email>
-        <sub_addr>3467 Ároktő Kossuth Lajos út 3</sub_addr>
-    </subscribers>
-    <subscribers sub_id="0002">
-        <phone>+36204567892</phone>
+        <phone>+36466748449</phone>
+        <address>
+            <ZIP>3467</ZIP>
+            <city>Ároktő</city>
+            <str>Kossuth Lajos út 3</str>
+        </address>
+    </subscriber>
+    <subscriber sub_id="0002">
+
         <email>istvan@gmail.com</email>
         <email>akiraly@citromail.hu</email>
         <email>istvankiraly@allamalapitas.hu</email>
-        <sub_addr>2435 Nagylók Szent István út 1001</sub_addr>
-    </subscribers>
+        <phone>+36204567892</phone>
+        <address>
+            <ZIP>2435</ZIP>
+            <city>Nagylók</city>
+            <str>Szent István út 1001</str>
+        </address>
+    </subscriber>
 
-    <subscribers sub_id="0003">
-        <phone>+36204567893</phone>
+    <subscriber sub_id="0003">
+
         <email>geza@gmail.com</email>
         <email>fejedelem@citromail.hu</email>
         <email>honfoglalas@magyarorszag.hu</email>
-        <sub_addr>2434 Hantos Kossuth Lajos út 2</sub_addr>
-    </subscribers>
+        <phone>+36204567893</phone>
+        <address>
+            <ZIP>2434</ZIP>
+            <city>Hantos</city>
+            <str>Kossuth Lajos út 2</str>
+        </address>
+    </subscriber>
     <!-- end -->
 
     <!-- Bills -->
@@ -48,106 +62,120 @@
     <!-- Plans -->
     <!-- begin -->
     <plan p_id="34670001">
-        <ZIP>3467</ZIP>
-        <city>Ároktő</city>
-        <str>Kossuth Lajos út 3</str>
+        <address>
+            <ZIP>3467</ZIP>
+            <city>Ároktő</city>
+            <str>Kossuth Lajos út 3</str>
+        </address>
+
     </plan>
 
     <plan p_id="34670002">
-        <ZIP>3592</ZIP>
-        <city>Nemesbikk</city>
-        <str>Posta utca 13</str>
+        <address>
+            <ZIP>3592</ZIP>
+            <city>Nemesbikk</city>
+            <str>Posta utca 13</str>
+        </address>
+
     </plan>
 
     <plan p_id="24350001">
-        <ZIP>2435</ZIP>
-        <city>Nagylók</city>
-        <str>Szent István út 1001</str>
+        <address>
+            <ZIP>2435</ZIP>
+            <city>Nagylók</city>
+            <str>Szent István út 1001</str>
+        </address>
+
     </plan>
 
     <plan p_id="24340001">
-        <ZIP>2220</ZIP>
-        <city>Vecsés</city>
-        <str>Gárdony Géza utca 10</str>
+        <address>
+            <ZIP>2220</ZIP>
+            <city>Vecsés</city>
+            <str>Gárdony Géza utca 10</str>
+        </address>
+
     </plan>
     <!-- end -->
 
     <!-- Services -->
     <!-- begin -->
 
-    <service serv_sum="34670001" tel_s="5120" int_s="Cu120" tv_s="5050">
+    <service serv_sum="34670001" tel_serv="5120" i_serv="Cu120" tv_serv="5050">
         <price_sum>9500</price_sum>
     </service>
 
-    <service serv_sum="34670002" tel_s="5120" int_s="Co500" tv_s="5050">
+    <service serv_sum="34670002" tel_serv="5120" i_serv="Co500" tv_serv="5050">
         <price_sum>12500</price_sum>
     </service>
 
-    <service serv_sum="24350001" tel_s="00" int_s="Op1000" tv_s="">
+    <service serv_sum="24350001" tel_serv="00" i_serv="Op1000">
         <price_sum>19000</price_sum>
     </service>
-    <service serv_sum="24340001" tel_s="5050" int_s="Co500" tv_s="2030">
+    <service serv_sum="24340001" tel_serv="5050" i_serv="Co500" tv_serv="2030">
         <price_sum>12000</price_sum>
     </service>
 
     <!-- end -->
 
+    <!-- Internet plan types-->
+    <!-- begin -->
+    <internet i_id="Cu120">
+        <technology>copper</technology>
+        <bwidth>120</bwidth>
+        <price>2000</price>
+    </internet>
+
+    <internet i_id="Co500">
+        <technology>coaxial</technology>
+        <bwidth>500</bwidth>
+        <price>5000</price>
+    </internet>
+
+    <internet i_id="Op1000">
+        <technology>optical</technology>
+        <bwidth>1000</bwidth>
+        <price>9000</price>
+    </internet>
+    <!-- end -->
+
     <!-- Telephone plan types -->
     <!-- begin -->
-    <telephone_plan tel_id="5120">
+    <telephone tel_id="5120">
         <data_GB>5</data_GB>
         <free_mins>120</free_mins>
         <price>3500</price>
-    </telephone_plan>
+    </telephone>
 
-    <telephone_plan tel_id="5050">
+    <telephone tel_id="5050">
         <data_GB>50</data_GB>
         <free_mins>50</free_mins>
         <price>5000</price>
-    </telephone_plan>
+    </telephone>
 
-    <telephone_plan tel_id="00">
-        <data_GB>unlimited</data_GB>
-        <free_mins>unlimited</free_mins>
+    <telephone tel_id="00">
+        <data_GB>-1</data_GB>
+        <free_mins>-1</free_mins>
         <price>10000</price>
-    </telephone_plan>
+    </telephone>
     <!-- end -->
 
-    <!-- Internet plan types-->
-    <!-- begin -->
-    <internet_plan i_id="Cu120">
-        <bwidth>120</bwidth>
-        <technology>copper</technology>
-        <price>2000</price>
-    </internet_plan>
 
-    <internet_plan i_id="Co500">
-        <bwidth>500</bwidth>
-        <technology>coaxial</technology>
-        <price>5000</price>
-    </internet_plan>
-
-    <internet_plan i_id="Op1000">
-        <bwidth>1000</bwidth>
-        <technology>optical</technology>
-        <price>9000</price>
-    </internet_plan>
-    <!-- end -->
 
     <!-- TV plan types -->
     <!-- begin -->
-    <tv_plan tv_id="2030">
+    <tv tv_id="2030">
         <ch_num>50</ch_num>
-        <hd_num>20</hd_num>
         <sd_num>30</sd_num>
+        <hd_num>20</hd_num>
         <price>2000</price>
-    </tv_plan>
+    </tv>
 
-    <tv_plan tv_id="5050">
+    <tv tv_id="5050">
         <ch_num>100</ch_num>
-        <hd_num>50</hd_num>
         <sd_num>50</sd_num>
+        <hd_num>50</hd_num>
         <price>4000</price>
-    </tv_plan>
+    </tv>
 
 </telecommunications>

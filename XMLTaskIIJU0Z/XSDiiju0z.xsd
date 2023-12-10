@@ -1,145 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="plan_no" type="xs:integer"/>
+  <xs:element name="city" type="xs:string"/>
+  <xs:element name="str" type="xs:string"/>
+  <xs:element name="price_sum" type="xs:integer"/>
+  <xs:element name="data_GB" type="xs:integer"/>
+  <xs:element name="free_mins" type="xs:integer"/>
+  <xs:element name="price" type="xs:integer"/>
+  <xs:element name="technology" type="xs:string"/>
+  <xs:element name="bwidth" type="xs:string"/>
+  <xs:element name="ch_num" type="xs:integer"/>
+  <xs:element name="sd_num" type="xs:integer"/>
+  <xs:element name="hd_num" type="xs:integer"/>
+
+  <xs:attribute name="sub_id" type="xs:string"/>
+  <xs:attribute name="bill_sub" type="xs:string"/>
+  <xs:attribute name="bill_plan" type="xs:string"/>
+  <xs:attribute name="p_id" type="xs:string"/>
+  <xs:attribute name="serv_sum" type="xs:string"/>
+  <xs:attribute name="tel_serv" type="xs:string"/>
+  <xs:attribute name="i_serv" type="xs:string"/>
+  <xs:attribute name="tv_serv" type="xs:string"/>
+  <xs:attribute name="tel_id" type="xs:string"/>
+  <xs:attribute name="i_id" type="xs:string"/>
+  <xs:attribute name="tv_id" type="xs:string"/>
+
+
+  <!-- Simple types -->
+
+  <xs:simpleType name="phoneType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\+\d{11}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="emailType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ZIPType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{4}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Complex types -->
+
+  <xs:complexType name="addressType">
+    <xs:sequence>
+      <xs:element name="ZIP" type="ZIPType"/>
+      <xs:element ref="city"/>
+      <xs:element ref="str"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="subscriberType">
+    <xs:sequence>
+      <xs:element name="email" type="emailType" maxOccurs="unbounded"/>
+      <xs:element name="phone" type="phoneType"/>
+      <xs:element name="address" type="addressType"></xs:element>
+    </xs:sequence>
+    <xs:attribute ref="sub_id" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="planType">
+    <xs:sequence>
+      <xs:element name="address" type="addressType"/>
+    </xs:sequence>
+    <xs:attribute ref="p_id" use="required"/>
+  </xs:complexType>
+
+  
+
+  <xs:complexType name="telephoneType">
+    <xs:sequence>
+      <xs:element ref="data_GB"/>
+      <xs:element ref="free_mins"/>
+      <xs:element ref="price"/>
+    </xs:sequence>
+    <xs:attribute ref="tel_id" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="internetType">
+    <xs:sequence>
+      <xs:element ref="technology"/>
+      <xs:element ref="bwidth"/>
+      <xs:element ref="price"/>
+    </xs:sequence>
+    <xs:attribute ref="i_id" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="tvType">
+    <xs:sequence>
+      <xs:element ref="ch_num"/>
+      <xs:element ref="sd_num"/>
+      <xs:element ref="hd_num"/>
+      <xs:element ref="price"/>
+    </xs:sequence>
+    <xs:attribute ref="tv_id" use="required"/>
+  </xs:complexType>
+
+  <!-- N:M switchboard -->
+
+  <xs:complexType name="billType">
+    <xs:sequence>
+      <xs:element ref="plan_no"/>
+    </xs:sequence>
+    <xs:attribute ref="bill_plan" use="required"/>
+    <xs:attribute ref="bill_sub" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="serviceType">
+    <xs:sequence>
+      <xs:element ref="price_sum"/>
+    </xs:sequence>
+    <xs:attribute ref="serv_sum" use="required"/>
+    <xs:attribute ref="tel_serv" use="optional"/>
+    <xs:attribute ref="i_serv" use="optional"/>
+    <xs:attribute ref="tv_serv" use="optional"/>
+  </xs:complexType>
+
+  <!-- Telecommunications company -->
 
   <xs:element name="telecommunications">
-
-    <!-- Simple types - Structure-->
-
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="subscribers" maxOccurs="unbounded" />
-        <xs:element name="bill" maxOccurs="unbounded" />
-        <xs:element name="plan" maxOccurs="unbounded" />
-        <xs:element name="service" maxOccurs="unbounded" />
-        <xs:element name="telephone_plan" maxOccurs="unbounded" />
-        <xs:element name="internet_plan" maxOccurs="unbounded" />
-        <xs:element name="tv_plan" maxOccurs="unbounded" />
+        <xs:element name="subscriber" type="subscriberType" maxOccurs="unbounded"/>
+        <xs:element name="bill" type="billType" maxOccurs="unbounded"/>
+        <xs:element name="plan" type="planType" maxOccurs="unbounded"/>
+        <xs:element name="service" type="serviceType" maxOccurs="unbounded"/>
+        <xs:element name="internet" type="internetType" maxOccurs="unbounded"/>
+        <xs:element name="telephone" type="telephoneType" maxOccurs="unbounded"/>
+        <xs:element name="tv" type="tvType" maxOccurs="unbounded"/>
       </xs:sequence>
     </xs:complexType>
 
+    <!-- Primary Keys -->
 
-    <!-- Keys -->
+    <xs:unique name="sub_id">
+      <xs:selector xpath="subscriber"/>
+      <xs:field xpath="@sub_id"/>
+    </xs:unique>
 
-    <xs:key name="sub_id">
-      <xs:selector xpath="subscribers" />
-      <xs:field xpath="@sub_id" />
-    </xs:key>
+    <xs:unique name="p_id">
+      <xs:selector xpath="plan"/>
+      <xs:field xpath="@p_id"/>
+    </xs:unique>
+    <xs:unique name="i_id">
+      <xs:selector xpath="internet"/>
+      <xs:field xpath="@i_id"/>
+    </xs:unique>
+    <xs:unique name="tel_id">
+      <xs:selector xpath="telephone"/>
+      <xs:field xpath="@tel_id"/>
+    </xs:unique>
+    <xs:unique name="tv_id">
+      <xs:selector xpath="tv"/>
+      <xs:field xpath="@tv_id"/>
+    </xs:unique>
 
-    <xs:key name="plan_id">
-      <xs:selector xpath="plan" />
-      <xs:field xpath="@p_id" />
-    </xs:key>
+    <!-- Foreign keys -->
 
-    <xs:key name="telephone_plan">
-      <xs:selector xpath="telephone_plan" />
-      <xs:field xpath="@tel_id" />
-    </xs:key>
-
-    <xs:key name="internet_plan">
-      <xs:selector xpath="internet_plan" />
-      <xs:field xpath="@i_id" />
-    </xs:key>
-
-    <xs:key name="tv_plan">
-      <xs:selector xpath="tv_plan" />
-      <xs:field xpath="@tv_id" />
-    </xs:key>
-
-    <!-- Foreign keys-->
-
-    <xs:keyref refer="sub_id" name="bill_sub_fkey">
-      <xs:selector xpath="Bill" />
-      <xs:field xpath="@bill_sub" />
+    <xs:keyref name="bill_subFK" refer="sub_id">
+      <xs:selector xpath="bill"/>
+      <xs:field xpath="@bill_sub"/>
+    </xs:keyref>
+    <xs:keyref name="bill_planFK" refer="p_id">
+      <xs:selector xpath="bill"/>
+      <xs:field xpath="@bill_plan"/>
     </xs:keyref>
 
-    <xs:keyref refer="plan_id" name="bill_plan_fkey">
-      <xs:selector xpath="Bill" />
-      <xs:field xpath="@bill_plan" />
+    <xs:keyref name="tel_servFK" refer="tel_id">
+      <xs:selector xpath="service"/>
+      <xs:field xpath="@tel_serv"/>
     </xs:keyref>
-
-    <xs:keyref refer="telephone_plan" name="tel_serv_fkey">
-      <xs:selector xpath="Telephone" />
-      <xs:field xpath="@tel_id" />
+    <xs:keyref name="i_servFK" refer="i_id">
+      <xs:selector xpath="service"/>
+      <xs:field xpath="@i_serv"/>
     </xs:keyref>
-
-    <xs:keyref refer="internet_plan" name="int_serv_fkey">
-      <xs:selector xpath="Internet" />
-      <xs:field xpath="@i_id" />
+    <xs:keyref name="tv_servFK" refer="tv_id">
+      <xs:selector xpath="service"/>
+      <xs:field xpath="@tv_serv"/>
     </xs:keyref>
-
-    <xs:keyref refer="tv_plan" name="tv_serv_fkey">
-      <xs:selector xpath="TV" />
-      <xs:field xpath="@tv_id" />
-    </xs:keyref>
-  </xs:element>
-
-  <!-- Entities  -->
-
-  <xs:element name="subscribers">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="phone" type="xs:string" />
-        <xs:element name="email" type="xs:string" maxOccurs="unbounded" />
-        <xs:element name="sub_addr" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-
-  <xs:element name="bill">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="plan_no" type="xs:integer"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-
-  <xs:element name="plan">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="ZIP"  type="xs:string"/>
-        <xs:element name="city" type="xs:string"/>
-        <xs:element name="str" type="xs:string"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-
-  <xs:element name="service">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="price_sum" type="xs:integer" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-
-  <xs:element name="telephone_plan">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="data_GB" type="xs:integer" />
-        <xs:element name="free_mins" type="xs:integer"/>
-        <xs:element name="price" type="xs:integer"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-
-  <xs:element name="internet_plan">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="bwidth" type="xs:integer" />
-        <xs:element name="technology" type="xs:string"/>
-        <xs:element name="price" type="xs:integer"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-
-  <xs:element name="tv_plan">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="ch_num" type="xs:integer" />
-        <xs:element name="hd_num" type="xs:integer"/>
-        <xs:element name="sd_num" type="xs:integer"/>
-        <xs:element name="price" type="xs:integer"/>
-      </xs:sequence>
-    </xs:complexType>
   </xs:element>
 
 </xs:schema>
