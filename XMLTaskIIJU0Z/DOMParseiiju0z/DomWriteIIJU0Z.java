@@ -17,13 +17,15 @@ public class DomWriteIIJU0Z {
 
     public static void main(String[] args) {
         try {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); //blah blah blah DocumentBuilderFactory. Same as before
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.newDocument();
             Element rootElement = document.createElement("telecommunications");
             rootElement.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
             rootElement.setAttribute("xsi:noNamespaceSchemaLocation", "XSDiiju0z.xsd");
             document.appendChild(rootElement);
+
+            /* Tedious processing of the different elements. They all follow the same model, so we'll take a look at one*/
 
             processSubscribers(document, rootElement, "0001", Arrays.asList("piroskaneni@piroskaneni.hu", "piroskaburner@gmail.com", "piros@freemail.hu"), "+36466748449", "3467", "Ároktő", "Kossuth Lajos út 3");
             processSubscribers(document, rootElement, "0002", Arrays.asList("istvan@gmail.com", "akiraly@citromail.hu", "istvankiraly@allamalapitas.hu"), "+36204567892", "2435", "Nagylók", "Szent István út 1001");
@@ -60,7 +62,7 @@ public class DomWriteIIJU0Z {
             e.printStackTrace();
         }
     }
-
+    /* So in the declaration we have all the elements we need the program to make, except Document and rootElement. Those are mandatory to have. Basically the function creates a bunch of new Elements, that it later appends to the root. Pretty simple once you understand it. */
     private static void processSubscribers(Document document, Element rootElement, String sub_id,
                                             List<String> emailList, String phone, String zip, String city, String str) {
         Element sub = document.createElement("subscriber");
@@ -89,6 +91,8 @@ public class DomWriteIIJU0Z {
         rootElement.appendChild(sub);
     }
 
+    /*Same as before */
+
     private static void processBills(Document document, Element rootElement, String bill_sub, String bill_plan, int plan_no) {
         Element bill = document.createElement("bill");
         bill.setAttribute("bill_sub", bill_sub);
@@ -99,6 +103,7 @@ public class DomWriteIIJU0Z {
 
         rootElement.appendChild(bill);
     }
+     /*Same as before */
 
     private static void processPlans(Document document, Element rootElement, String p_id, String zip, String city, String str) {
         Element plan = document.createElement("plan");
@@ -115,7 +120,9 @@ public class DomWriteIIJU0Z {
 
         plan.appendChild(addressE);
         rootElement.appendChild(plan);
-    }
+    } 
+    
+    /*These are all the same, but different elements. Really no difference in logic here.*/
 
     private static void processServices(Document document, Element rootElement, String serv_sum, String tel_serv, String i_serv, String tv_serv, int price_sum) {
         Element service = document.createElement("service");
@@ -179,20 +186,21 @@ public class DomWriteIIJU0Z {
         rootElement.appendChild(tv);
     }
 
+    /*This one simplifies element creation, reduces it to one command, instead of three. */
     private static Element createElement(Document document, String tagName, String textContent) {
         Element element = document.createElement(tagName);
         element.setTextContent(textContent);
         return element;
     }
-
+    /* This one creates the output. Same as in the DOMRead program essentially. */
     private static void printDocument(Document document) {
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
-            transformer.transform(new DOMSource(document), new StreamResult("XMLiiju0z.xml"));
-
+            /*This is the line that actually creates the new file named: "XMLiiju0z1.xml". Note that the original is called: "XMLiiju0z.xml", meaning i put a "1" before the file extension. You will know it's the program's creation if it doesn't have any comments*/
+            transformer.transform(new DOMSource(document), new StreamResult("XMLiiju0z1.xml")); 
         } catch (Exception e) {
             e.printStackTrace();
         }
