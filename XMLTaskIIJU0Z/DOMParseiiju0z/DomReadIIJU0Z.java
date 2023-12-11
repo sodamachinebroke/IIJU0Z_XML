@@ -35,7 +35,7 @@ public class DomReadIIJU0Z {
         listData(nodeList, indent);
         System.out.println("</" + doc.getDocumentElement().getNodeName() + ">"); // Formatting the thingy basically
 
-        saveDocumentToFile(doc, "XMLiiju0zreadoutput.xml"); // This one saves the new document into the new file
+        saveDocumentToFile(doc, "XMLiiju0zout.xml"); // This one saves the new document into the new file
     }
 
     private static void saveDocumentToFile(Document doc, String fileName) { // This one does a bunch of do-hickeys to

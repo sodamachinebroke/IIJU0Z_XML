@@ -16,7 +16,7 @@ import org.xml.sax.SAXException;
 public class DomModifyIIJU0Z {
     public static void main(String[] args) {
         File xmlFile = new File("XMLiiju0z.xml");
-        Document doc = introduceFile(xmlFile);
+        Document doc = parseFile(xmlFile);
 
         if (doc == null) {
             System.out.println("The document is null");
@@ -33,7 +33,7 @@ public class DomModifyIIJU0Z {
     }
 
     /*Introduces file just like in the previous programs */
-    public static Document introduceFile(File xmlFile) {
+    public static Document parseFile(File xmlFile) {
         Document doc = null;
 
         try {
