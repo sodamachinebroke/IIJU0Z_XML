@@ -27,7 +27,7 @@ public class DomReadIIJU0Z {
         doc.getDocumentElement().normalize(); //Normalizing document so it complies with OSHA and DOM rules
         System.out.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
         System.out.println("<" + doc.getDocumentElement().getNodeName() +
-                " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"XMLSchemaiiju0z.xsd\">");
+                " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"XSDiiju0z.xsd\">");
 
         NodeList nodeList = doc.getDocumentElement().getChildNodes();
         String indent = "";
