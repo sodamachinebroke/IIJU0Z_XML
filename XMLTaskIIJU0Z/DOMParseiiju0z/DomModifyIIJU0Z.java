@@ -12,28 +12,31 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
-public class DomModifyIIJU0Z {
-	public static void main(String[] args) {
 
+public class DomModifyIIJU0Z {
+    public static void main(String[] args) {
         File xmlFile = new File("XMLiiju0z.xml");
         Document doc = introduceFile(xmlFile);
 
         if (doc == null) {
-       	 System.out.println("The document is null");
-	         System.exit(-1);
-           
-       } else {
-       	doc.getDocumentElement().normalize();
-       	}
+            System.out.println("The document is null");
+            System.exit(-1);
+        } else {
+            doc.getDocumentElement().normalize();
+        }
 
-        
-       
+        /*This function applies the modifications*/
+        modifyValues(doc.getDocumentElement());
+
+        /*Print the modified XML to the screen*/ 
+        printXml(doc);
     }
 
-    public static Document introduceFile(File xmlFile){
+    /*Introduces file just like in the previous programs */
+    public static Document introduceFile(File xmlFile) {
         Document doc = null;
 
-        try{
+        try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dbBuilder = dbFactory.newDocumentBuilder();
             doc = dbBuilder.parse(xmlFile);
@@ -43,36 +46,71 @@ public class DomModifyIIJU0Z {
         return doc;
     }
 
-    public static void listData(NodeList nodeList, String indent){
-        indent += "\t";
 
-        if(nodeList != null) {
-            for (int i = 0; i < nodeList.getLength(); i++) {
-                Node node = nodeList.item(i);
-                if (node.getNodeType() == Node.ELEMENT_NODE && !node.getTextContent().trim().isEmpty()) {
-                    System.out.print(indent + "<" + node.getNodeName());
-                    if (node.hasAttributes()) {
-                        for (int k = 0; k < node.getAttributes().getLength(); k++) {
-                            Node attribute = node.getAttributes().item(k);
-                            System.out.print(" "+attribute.getNodeName()+"=\""+attribute.getNodeValue()+"\"");
-                        }
-                        System.out.println(">");
-                    }else {
-                    	System.out.println(">");
-                    }
-                    	
-                    NodeList nodeList_new = node.getChildNodes();
-                    listData(nodeList_new, indent);
-                    System.out.println(indent + "</" + node.getNodeName() + ">");
-                } else if (node instanceof Text){
-                    String value = node.getNodeValue().trim();
-                    if (value.isEmpty()){
-                        continue;
-                    }
-                    System.out.println(indent + node.getTextContent());
+    /*This is where the magic happens*/
+    public static void modifyValues(Element element) {
+        NodeList childNodes = element.getChildNodes();
+
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            Node node = childNodes.item(i);
+
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element childElement = (Element) node;
+
+                /*Increase the prices of internet plans by 2000*/
+                if ("internet".equals(childElement.getNodeName())) {
+                    int currentPrice = Integer.parseInt(childElement.getElementsByTagName("price").item(0).getTextContent());
+                    int newPrice = currentPrice + 2000;
+                    childElement.getElementsByTagName("price").item(0).setTextContent(Integer.toString(newPrice));
                 }
+
+                /*Adds "lol" at the end of every email address lol*/
+                if ("email".equals(childElement.getNodeName())) {
+                    childElement.setTextContent(childElement.getTextContent() + "lol");
+                }
+
+                /*Changes every ZIP to 3333*/
+                if ("ZIP".equals(childElement.getNodeName())) {
+                    childElement.setTextContent("3333");
+                }
+
+                /*Reduces HD TV channel number by 15*/
+                if ("tv".equals(childElement.getNodeName())) {
+                    int currentHdNum = Integer.parseInt(childElement.getElementsByTagName("hd_num").item(0).getTextContent());
+                    int newHdNum = currentHdNum - 15;
+                    childElement.getElementsByTagName("hd_num").item(0).setTextContent(Integer.toString(newHdNum));
+                }
+
+                /*Adds "eeeeeeeee" at the beginning of every street name*/
+                if ("str".equals(childElement.getNodeName())) {
+                    childElement.setTextContent("eeeeeeeee" + childElement.getTextContent());
+                }
+
+                /*Increase plan_no by 1000, so everyone has thousands of plans ehehehehe*/
+                if ("plan_no".equals(childElement.getNodeName())) {
+                    int currentPlanNo = Integer.parseInt(childElement.getTextContent());
+                    int newPlanNo = currentPlanNo + 1000;
+                    childElement.setTextContent(Integer.toString(newPlanNo));
+                }
+
+                /* Actually apply these modifications to targeted elements*/ 
+                modifyValues(childElement);
             }
         }
     }
+    public static void printXml(Document doc) {
+        try {
+            /*Transformer factory let's go */
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
+            /*Printy printy :3*/
+            DOMSource source = new DOMSource(doc);
+            StreamResult consoleResult = new StreamResult(System.out);
+            transformer.transform(source, consoleResult);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

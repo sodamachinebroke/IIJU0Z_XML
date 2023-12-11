@@ -19,16 +19,22 @@ public class DomQueryIIJU0Z {
         if (doc != null) {
             doc.getDocumentElement().normalize();
 
+            /*Lists subscribers' sub_id and their first email if they have more than one plan*/
             querySubscribersWithMultiplePlans(doc); 
 
+            /*Shows the subscriber with the highest bill to pay*/
             querySubscriberWithMaxBillPayment(doc); 
 
+            /*Shows the plans on Optical Cable technology */
             queryInternetPlansOnOpticalCable(doc); 
 
+            /*Shows the specified subscriber's main address */
             querySubscriberPlansAddress(doc, "0002"); 
 
+            /*Lists every plan without a TV service*/
             queryPlansWithoutTV(doc);
 
+            /*Lists every plan and the price_sum*/
             listPlansWithTotalPrice(doc); 
 
         } else {
@@ -37,6 +43,8 @@ public class DomQueryIIJU0Z {
         }
     }
 
+
+    /*DocumentBuilderFactory and other things */
     private static Document parseXmlFile(File xmlFile) {
         Document doc = null;
 
@@ -212,7 +220,7 @@ public class DomQueryIIJU0Z {
     }
     
     
-    
+    /*This one prints the questions onto the screen*/
     
     public static void listData(NodeList nodeList, String indent){
         indent += "\t";
