@@ -85,7 +85,36 @@ public class DomQueryIIJU0Z {
         }
     }
 
-    private static void listData(NodeList nodeList, String indent) {
+    public static void listData(NodeList nodeList, String indent){
+        indent += "\t";
+
+        if(nodeList != null) {
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Node node = nodeList.item(i);
+                if (node.getNodeType() == Node.ELEMENT_NODE && !node.getTextContent().trim().isEmpty()) {
+                    System.out.print(indent + "<" + node.getNodeName());
+                    if (node.hasAttributes()) {
+                        for (int k = 0; k < node.getAttributes().getLength(); k++) {
+                            Node attribute = node.getAttributes().item(k);
+                            System.out.print(" "+attribute.getNodeName()+"=\""+attribute.getNodeValue()+"\"");
+                        }
+                        System.out.println(">");
+                    }else {
+                    	System.out.println(">");
+                    }
+                    	
+                    NodeList nodeList_new = node.getChildNodes();
+                    listData(nodeList_new, indent);
+                    System.out.println(indent + "</" + node.getNodeName() + ">");
+                } else if (node instanceof Text){
+                    String value = node.getNodeValue().trim();
+                    if (value.isEmpty()){
+                        continue;
+                    }
+                    System.out.println(indent + node.getTextContent());
+                }
+            }
+        }
     }
 }
 
