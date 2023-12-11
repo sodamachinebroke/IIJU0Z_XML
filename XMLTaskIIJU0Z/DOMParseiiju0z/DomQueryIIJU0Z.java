@@ -1,6 +1,7 @@
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -45,12 +46,14 @@ public class DomQueryIIJU0Z {
     private static void querySubscribersWithMultiplePlans(Document doc) {
         NodeList subscribers = doc.getDocumentElement().getElementsByTagName("subscriber");
         for (int i = 0; i < subscribers.getLength(); i++) {
-            NodeList plans = subscribers.item(i).getParentNode().getElementsByTagName("bill");
+            Element subscriber = (Element) subscribers.item(i);
+            NodeList plans = subscriber.getElementsByTagName("bill");
             if (plans.getLength() > 1) {
-                listData(subscribers.item(i).getChildNodes(), "");
+                listData(subscriber.getChildNodes(), "");
             }
         }
     }
+    
 
     private static void querySubscriberWithMaxBillPayment(Document doc) {
         NodeList bills = doc.getDocumentElement().getElementsByTagName("bill");
@@ -77,13 +80,12 @@ public class DomQueryIIJU0Z {
         for (int i = 0; i < subscribers.getLength(); i++) {
             if (subscribers.item(i).getAttributes().getNamedItem("sub_id").getNodeValue().equals(maxSubscriberId)) {
                 listData(subscribers.item(i).getChildNodes(), "");
-                break; // Only print the details of the subscriber with the max payment
+                break;
             }
         }
     }
 
     private static void listData(NodeList nodeList, String indent) {
-        // This method remains unchanged from the previous version
     }
 }
 
