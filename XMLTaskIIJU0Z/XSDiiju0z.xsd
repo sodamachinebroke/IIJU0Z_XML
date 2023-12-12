@@ -76,7 +76,7 @@
     <xs:attribute ref="p_id" use="required"/>
   </xs:complexType>
 
-  
+
 
   <xs:complexType name="telephoneType">
     <xs:sequence>
